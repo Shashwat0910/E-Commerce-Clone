@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="/"><b>Samaan Lelo </b></a>
+        <a href="/cart" class="btn btn-primary ml-auto">Cart <span class="badge badge-light">{{ cart|length }}</span></a>
+        <a href="/logout" class="btn btn-primary ml-auto">logout</a>
+    </nav>
+
+    <div class="container">
+        <h1>Product Page</h1>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img src="{{ product.image}}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">Price: ${{ product.price }}</p>
+                        <a href="/product/{{ product.id }}" class="btn btn-outline-primary">View Details</a>
+                        <a href="/cart/{{ product.id }}" class="btn btn-success">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
