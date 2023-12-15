@@ -1,0 +1,28 @@
+e-commerce-website/
+│
+├── app/
+│   ├── __init__.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py          # Registration, login, password, and forgot password routes
+│   │   ├── catalog.py       # Product catalog routes
+│   │   ├── cart.py          # Cart management routes
+│   │   ├── checkout.py      # Checkout and payment routes
+│   ├── models.py            # Database models
+│
+├── templates/
+│   ├── base.html            # Base HTML template
+│   ├── registration.html    # Registration form
+│   ├── login.html           # Login form
+│   ├── catalog.html         # Product catalog display
+│   ├── cart.html            # Shopping cart display
+│   ├── checkout.html        # Checkout page
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│
+├── config.py                # Configuration settings
+│
+├── run.py                   # Application entry point
