@@ -3,40 +3,38 @@
 <head>
     <title>Shopping Cart</title>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="/"><b>Samaan Lelo </b></a>
+        <a href="/checkout" class="btn btn-primary ml-auto">Total: ${{ cart_total }} Checkout </a>
+        <a href="/logout" class="btn btn-primary ml-auto">logout</a>
+    </nav>
+    
     <div class="container">
-        <h1>Shopping Cart</h1>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in cart_items %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>${{ item.price }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>${{ item.total }}</td>
-                    <td>
-                        <a href="/remove_from_cart/{{ item.id }}" class="btn btn-danger">Remove</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <p>Total: ${{ cart_total }}</p>
-        <a href="/checkout" class="btn btn-primary">Buy</a>
+        <h1>Cart</h1>
+        <div class="row">
+            {% for item in cart_items %}
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img src="{{ item.image}}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-text">Price: ${{ item.price }}</p>
+                        <p class="card-text">Quantity: {{ item.quantity }}</p>
+            
+                        <a href="/remove_from_cart/{{ item.id }}" class="btn btn-outline-primary">Remove</a>
+                        <a href="/buy_now" class="btn btn-success">Buy now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
+
+
+
